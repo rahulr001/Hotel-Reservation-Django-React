@@ -1,0 +1,126 @@
+
+.n-wrapper{
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    padding-top: 10px;
+}
+.n-left{
+    flex:1;
+   display: flex;
+   align-items:center;
+    gap: 2rem;
+}
+.n-name .profile-name{
+    font-size:1.3rem;
+    font-weight:bold;
+}
+
+.n-right{
+    display: flex;
+    flex: 1 ;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 400;
+}
+.n-list{
+    display: flex;
+    align-items: center;
+}
+.n-list ul{
+    display: flex;
+    gap:2rem;
+    margin-right: 2rem;
+    list-style-type:none;
+    transition: width 0.7s ease, background-color 0.5s ease;
+    }
+    .n-list ul li{
+        cursor: pointer;
+        
+    }
+    .link{
+        color:black;
+        text-decoration: none;
+    }
+.n-list ul li:after {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width 0.7s ease, background-color 0.5s ease;
+    }
+
+.n-list ul li:hover:after{
+    width:100%;
+    background:#fd7a0f;
+    }
+.n-button{
+    flex:2;
+}
+.nav-icons{
+    display:none;
+}
+.button
+{
+border-radius:34px;
+height:2rem;
+border:none;
+color:white;
+font-size: 16px;
+padding:1px 23px 1px 23px;
+background:linear-gradient(180deg,#fd7a0f 26.01%,#fb2f2f 99.36%);
+box-shadow: 0px 20px 24px 3px rgba(251,161,40,0.42);
+}
+button:hover{
+  background: white;
+  cursor:pointer;
+  font-weight: bold;
+  color:#fd7a0f;
+  border: 1px solid #fd7a0f;
+}
+
+@media screen and (max-width:920px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-top: 1pxsolid #fff;
+        padding:1rem;
+
+        position: absolute;
+        top: 80px;
+        left: -115%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index:2;
+        background-color: var(--orange);
+      }
+      .nav-menu.active {
+        background:rgba(255, 51, 0, 0.719);
+        align-items: center;
+        justify-content: center;
+        left: 0px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 2;
+        color:rgb(255, 255, 255);
+        font-weight: bold;
+      }
+      .n-list ul li:hover:after{
+    
+        width:100%;
+        background:white;
+        }
+      .nav-icons{
+        display:block;
+      }
+      .n-button{
+        display: none;
+    }
+    .nav-icons{
+       right:10rem;
+    }
+
+}
+

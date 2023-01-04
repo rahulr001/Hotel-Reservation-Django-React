@@ -1,0 +1,48 @@
+.main-container{
+    width:70vw;
+    height:40vh;
+    border-radius:5px;
+    border:1px solid #fd7a0f;
+    background:rgb(252, 250, 250);
+    box-shadow: 10px 10px 5px 1px #fd7a0f;
+    margin:1rem;
+}
+.room-container{
+  display: flex;
+}
+.g-left{
+  width:40%
+}
+.g-left img{
+  margin:1.5rem 1rem;
+  width:20rem;
+  height:13rem;
+  border-radius:10px;
+}
+.g-right{
+    margin:2rem 0 2rem 0rem;
+}
+.g-right h1{
+   font-size:1.5rem; 
+}
+.carosel-img{
+  width:100%;
+  height:20rem;
+}
+.button-room{
+  background:white;
+  color:#fd7a0f;
+  border:1px solid #fd7a0f;
+  margin:5rem 0 0 19rem;
+}
+.button-room:hover{
+  background-color: #fd7a0f;
+  color:white;
+
+}
+.close-btn{
+  margin:0px;
+}
+.book-btn{
+  margin:5rem 0 0 1rem;
+}
