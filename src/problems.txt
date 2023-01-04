@@ -1,2 +1,0 @@
-# issue can't resolve proper.js
-npm install popper.js --save
