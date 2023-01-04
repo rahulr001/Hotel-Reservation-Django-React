@@ -5,7 +5,7 @@ from .models import (
     Booking_Details,
     Room_Details,
     Room_Booking_Details,
-    Party_hall_Booking_Details,
+    Party_Hall_Booking_Details,
     Room_Payment_details,
     Party_Hall_Payment_details,
     Room_Occupancy_Details

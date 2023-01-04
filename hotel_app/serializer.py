@@ -4,7 +4,7 @@ from .models import (
     Booking_Details,
     Room_Details,
     Room_Booking_Details,
-    Party_hall_Booking_Details,
+    Party_Hall_Booking_Details,
     Room_Payment_details,
     Party_Hall_Payment_details,
     Room_Occupancy_Details
@@ -50,7 +50,7 @@ class Room_Occupancy_Serializer(serializers.ModelSerializer):
 
 class Party_hall_Booking_Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Party_hall_Booking_Details
+        model = Party_Hall_Booking_Details
         fields = ['booking_id ', 'date_and_time', 'advance_amount', 'hall_type', 'rent_amount', 'function_date ',
                   'function_time ', 'refered_by']
 
