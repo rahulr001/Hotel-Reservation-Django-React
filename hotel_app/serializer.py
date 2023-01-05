@@ -4,7 +4,7 @@ from .models import (
     Booking_Details,
     Room_Details,
     Room_Booking_Details,
-    Party_hall_Booking_Details,
+    Party_Hall_Booking_Details,
     Room_Payment_details,
     Party_Hall_Payment_details,
     Room_Occupancy_Details
@@ -50,7 +50,7 @@ class Room_Occupancy_Serializer(serializers.ModelSerializer):
 
 class Party_hall_Booking_Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Party_hall_Booking_Details
+        model = Party_Hall_Booking_Details
         fields = ['booking_id ', 'date_and_time', 'advance_amount', 'hall_type', 'rent_amount', 'function_date ',
                   'function_time ', 'refered_by']
 
@@ -60,3 +60,16 @@ class Party_Hall_Payment_details_Serializer(serializers.ModelSerializer):
         model = Party_Hall_Payment_details
         fields = ['payment_id', 'amount', 'mode_of_payment', 'payment_type', 'date_time', 'booking_id']
 
+
+class Booking_Details_View_Serializer(serializers.ModelSerializer):
+    user = serializers.CharField(source='Room_Booking_Details.user')
+    oyo_booking_id = serializers.IntegerField(source='Room_Booking_Details.oyo_booking_id')
+    room_type = serializers.CharField(source='Room_Booking_Details.room_type')
+    no_of_rooms = serializers.IntegerField(source='Room_Booking_Details.no_of_rooms')
+    from_date = serializers.DateField(source='Room_Booking_Details.from_date')
+    to_date = serializers.DateField(source='Room_Booking_Details.to_date')
+
+    class Meta:
+        model = Booking_Details
+        fields = ['booking_id ', 'user','oyo_booking_id','room_type','no_of_rooms','from_date','to_date', 'booking_date_time ', 'booking_amount', 'booking_advance_amount',
+                  'booking_status']

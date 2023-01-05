@@ -5,7 +5,7 @@ from .models import (
     Booking_Details,
     Room_Details,
     Room_Booking_Details,
-    Party_hall_Booking_Details,
+    Party_Hall_Booking_Details,
     Room_Payment_details,
     Party_Hall_Payment_details,
     Room_Occupancy_Details
@@ -18,14 +18,16 @@ from .serializer import (
     Party_hall_Booking_Serializer,
     Party_Hall_Payment_details_Serializer,
     Booking_Details_Serializer,
-    Booking_Person_Details_Serializer
+    Booking_Person_Details_Serializer,
+    Booking_Details_View_Serializer
 )
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
-from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
-from rest_framework.response import Response
-from rest_framework import status
 from django.http import JsonResponse
+
+
+class Booking_Details_ViewList(ListAPIView):
+    serializer_class = Booking_Details_View_Serializer
+    queryset = Booking_Details.objects.all()
 
 
 class Booking_Person_Details_View(CreateAPIView):
