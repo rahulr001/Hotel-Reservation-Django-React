@@ -55,8 +55,8 @@ class Room_Type(models.Model):
 class Booking_Person_Details(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=20, blank=False)
-    mobile_no = models.IntegerField()
-    adhaar_no = models.IntegerField()
+    mobile_no = models.CharField(max_length=10)
+    adhaar_no = models.CharField(max_length=12)
     email = models.EmailField()
 
     def __str__(self):
@@ -88,7 +88,7 @@ class Room_Booking_Details(models.Model):
     from_date = models.DateField()
     to_date = models.DateField()
 
-    def __int__(self):
+    def __str__(self):
         return self.booking_id
 
 
@@ -101,7 +101,7 @@ class Booking_Details(models.Model):
     booking_status = models.ForeignKey(Booking_status, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class Hall_Type(models.Model):
@@ -117,7 +117,7 @@ class Room_Details(models.Model):
     room_type = models.ForeignKey(Room_Type, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.room_property_id
+        return self.room_property_id.name
 
 
 class Payment_Status(models.Model):
@@ -133,7 +133,7 @@ class Room_Occupancy_Details(models.Model):
     room_id = models.ForeignKey(Room_Details, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.booking_id
+        return self.user.username
 
 
 class Party_Hall_Booking_Details(models.Model):

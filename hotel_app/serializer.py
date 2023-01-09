@@ -9,19 +9,22 @@ from .models import (
     Party_Hall_Payment_details,
     Room_Occupancy_Details
 )
+
 from rest_framework import serializers
 
 
 class Booking_Person_Details_Serializer(serializers.ModelSerializer):
+    # user = serializers.CharField(source='Booking_Person_Details.user')
+
     class Meta:
         model = Booking_Person_Details
-        fields = ['name', 'mobile_no', 'adhaar_no', 'email']
+        fields = ['user', 'name', 'mobile_no', 'adhaar_no', 'email']
 
 
 class Room_Booking_Details_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Room_Booking_Details
-        fields = ['oyo_booking_id', 'room_type', 'no_of_rooms', 'from_date', 'to_date']
+        fields = ['user', 'booking_id', 'oyo_booking_id', 'room_type', 'no_of_rooms', 'from_date', 'to_date']
 
 
 class Room_Details_Serializer(serializers.ModelSerializer):
@@ -31,45 +34,46 @@ class Room_Details_Serializer(serializers.ModelSerializer):
 
 
 class Booking_Details_Serializer(serializers.ModelSerializer):
+    # booking_id = serializers.CharField(source='Room_Booking_Details.booking_id')
+
     class Meta:
         model = Booking_Details
-        fields = ['booking_id ', 'booking_date_time ', 'booking_amount', 'booking_advance_amount', 'booking_status']
+        fields = ['user', 'booking_id', 'booking_date_time', 'booking_amount', 'booking_advance_amount',
+                  'booking_status']
 
 
 class Room_Payment_details_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Room_Payment_details
-        fields = ['payment_id', 'amount', 'mode_of_payment', 'payment_type', 'date_time', 'booking_id']
+        fields = ['user', 'payment_id', 'amount', 'mode_of_payment', 'payment_type', 'date_time', 'booking_id']
 
 
 class Room_Occupancy_Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Room_Occupancy_Details
-        fields = ['booking_id ', 'room_id ']
+        model = Room_Booking_Details
+        fields = ['user', 'booking_id', 'oyo_booking_id', 'room_type', 'no_of_rooms', 'from_date', 'to_date']
 
 
 class Party_hall_Booking_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Party_Hall_Booking_Details
-        fields = ['booking_id ', 'date_and_time', 'advance_amount', 'hall_type', 'rent_amount', 'function_date ',
-                  'function_time ', 'refered_by']
+        fields = ['user', 'booking_id', 'date_and_time', 'advance_amount', 'hall_type', 'rent_amount', 'function_date',
+                  'function_time', 'refered_by']
 
 
 class Party_Hall_Payment_details_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Party_Hall_Payment_details
-        fields = ['payment_id', 'amount', 'mode_of_payment', 'payment_type', 'date_time', 'booking_id']
+        fields = ['user', 'payment_id', 'amount', 'mode_of_payment', 'payment_type', 'date_time', 'booking_id']
 
 
 class Booking_Details_View_Serializer(serializers.ModelSerializer):
-    user = serializers.CharField(source='Room_Booking_Details.user')
-    oyo_booking_id = serializers.IntegerField(source='Room_Booking_Details.oyo_booking_id')
-    room_type = serializers.CharField(source='Room_Booking_Details.room_type')
-    no_of_rooms = serializers.IntegerField(source='Room_Booking_Details.no_of_rooms')
-    from_date = serializers.DateField(source='Room_Booking_Details.from_date')
-    to_date = serializers.DateField(source='Room_Booking_Details.to_date')
-
     class Meta:
         model = Booking_Details
-        fields = ['booking_id ', 'user','oyo_booking_id','room_type','no_of_rooms','from_date','to_date', 'booking_date_time ', 'booking_amount', 'booking_advance_amount',
-                  'booking_status']
+        fields = '__all__'
+
+
+class Booking_Details_View_Serializer2(serializers.ModelSerializer):
+    class Meta:
+        model = Room_Booking_Details
+        fields = '__all__'

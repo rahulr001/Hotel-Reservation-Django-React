@@ -10,7 +10,8 @@ from .models import (
     Party_Hall_Payment_details,
     Booking_status,
     Room_Type,
-    Hall_Type
+    Hall_Type,
+    # Room_Occupancy_Details
 )
 
 admin.site.register(Booking_Person_Details)
@@ -24,3 +25,4 @@ admin.site.register(Party_Hall_Payment_details)
 admin.site.register(Booking_status)
 admin.site.register(Room_Type)
 admin.site.register(Hall_Type)
+# admin.site.register(Room_Occupancy_Details)
