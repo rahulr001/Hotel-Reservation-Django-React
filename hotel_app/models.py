@@ -46,7 +46,7 @@ payment_type_choice = (
 
 
 class Room_Type(models.Model):
-    room_type = models.CharField(choices=room_type_choice, max_length=20)
+    room_type = models.CharField(blank=True,choices=room_type_choice, max_length=20)
 
     def __str__(self):
         return self.room_type

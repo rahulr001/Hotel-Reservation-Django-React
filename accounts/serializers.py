@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
-from .models import UserModel
+
 
 
 # class UserSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
         """
             Create a new User using validated data
         """
-        user_instance = UserModel.objects.create_user(**validated_data)
+        user_instance = User.objects.create_user(**validated_data)
         user_instance.save()
         return user_instance
 
@@ -36,5 +36,5 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
 
-        model = UserModel
+        model = User
         fields = ('id', 'username', 'email', 'password' )

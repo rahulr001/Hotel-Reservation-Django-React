@@ -1,14 +1,15 @@
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
-from rest_framework_simplejwt.views import TokenObtainPairView
-from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+# from .authentication import EmailBackendModel
+from django.contrib.auth import login
+from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import User
+from django.core.cache import cache
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.contrib.auth import   authenticate
 from .serializers import UserSerializer
+
 
 # class MyTokenObtainSerilizer(TokenObtainPairSerializer):
 #     # serializer_class = TokenObtainPairSerializer
@@ -62,21 +63,7 @@ from .serializers import UserSerializer
 #         user.save()
 #         return JsonResponse(new_user, status=status.HTTP_200_OK)
 #
-
-# from .authentication import EmailBackendModel
-from django.contrib.auth import authenticate, login, logout
-from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
-from django.core.cache import cache
-from .serializers import UserSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 # from . import request_utils
-from . import models
-
-from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth import get_user_model
 
 
 def retrieve_email_and_password(request):
@@ -84,9 +71,10 @@ def retrieve_email_and_password(request):
         Extract the email and the password from a request
         :param request: The request
     """
-    username = request.data.get('username', '')
-    password = request.data.get('password', '')
-    email= request.data.get('email','')
+    username = request.data.get('username')
+    password = request.data.get('password1')
+    email = request.data.get('email')
+    print(username,password,email)
     return username, password, email
 
 
@@ -113,7 +101,7 @@ class EmailBackendModel(ModelBackend):
         helps generate the session id
     """
 
-    def authenticate(self, username=None, password=None,  ):
+    def authenticate(self, username=None, password=None, ):
         """
             authenticate the user by retrieving it from the
             database
@@ -121,25 +109,25 @@ class EmailBackendModel(ModelBackend):
             :param password: The password of the user
             :param kwargs: Other cool stuff you can add
         """
-        UserModel = get_user_model()
+        User = get_user_model()
         try:
-            user = UserModel.objects.get(username=username)
+            user = User.objects.get(username=username)
             return user
-        except UserModel.DoesNotExist:
+        except User.DoesNotExist:
             return None
 
 
 class UserAuthenticationView(APIView):
+
     def post(self, request, format=None):
-        username, password,email = retrieve_email_and_password(request)
-        authentication_backend = EmailBackendModel()
-        user = authentication_backend.authenticate(username=username, password=password)
+        username = request.data.get('username')
+        password = request.data.get('password1')
+        print(username,password)
+        user = authenticate(username=username, password=password)
         if user is None:
             return Response({'errors': 'The requested user does not exist'}, status=status.HTTP_400_BAD_REQUEST)
-        if user.is_ban:
-            return Response({'errors': 'The requested user is banned'}, status=status.HTTP_400_BAD_REQUEST)
         login(request, user)
-        cache.set(request.session.session_key, user.username, 60 * 60 * 24)
+        # cache.set(request.session.session_key, user.username, 60 * 60 * 24)
         serializer = UserSerializer(user, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -147,12 +135,11 @@ class UserAuthenticationView(APIView):
 class UserRegistrationView(APIView):
 
     def post(self, request, format=None):
-
-        # if is_user_authenticated(request):
+        # if is_use
         #     return Response({'errors': 'User is authenticated'}, status=status.HTTP_400_BAD_REQUEST)
-        username, password,email = retrieve_email_and_password(request)
+        username, password, email = retrieve_email_and_password(request)
 
-        user = User.objects.create_user(username=username,email=email, password=password)
+        user = User.objects.create_user(username=username, email=email, password=password)
         if not user:
             return Response({'errors': 'The username already exist'}, status=status.HTTP_400_BAD_REQUEST)
         return Response(status=status.HTTP_200_OK)
