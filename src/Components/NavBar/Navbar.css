@@ -1,51 +1,66 @@
 
 .n-wrapper{
     display: flex;
+    /* border-bottom:1px solid gray; */
     justify-content: space-between;
     height: 10vh;
-    padding-top: 10px;
+    width: 100vw;
+    margin-top:10px;
+    /* padding-top: 10px; */
 }
 .n-left{
-    flex:1;
+   flex:1;
    display: flex;
    align-items:center;
-    gap: 2rem;
+   margin-top:-5px;
+    gap:2rem;
+   padding-left:1rem;
 }
 .n-name .profile-name{
-    font-size:1.3rem;
+    font-size:1.5rem;
     font-weight:bold;
 }
 
 .n-right{
     display: flex;
     flex: 1 ;
+
     align-items: center;
     justify-content: flex-end;
     font-weight: 400;
 }
 .n-list{
+   
     display: flex;
     align-items: center;
 }
 .n-list ul{
-    display: flex;
-    gap:2rem;
-    margin-right: 2rem;
+    display:flex;
+    gap:1rem;
+    margin-right:3rem;
     list-style-type:none;
     transition: width 0.7s ease, background-color 0.5s ease;
     }
+    
     .n-list ul li{
         cursor: pointer;
-        
+        font-size:1.1rem;
+        font-weight:bold;
     }
+    
+    .n-list ul li:nth-child(1){
+        margin-top:0.5rem;  
+    }
+    
     .link{
         color:black;
+        /* font-size:2rem; */
         text-decoration: none;
     }
 .n-list ul li:after {
     content: "";
     display: block;
-    height: 3px;
+    height:3px;
     width: 0;
     background: transparent;
     transition: width 0.7s ease, background-color 0.5s ease;
@@ -53,13 +68,29 @@
 
 .n-list ul li:hover:after{
     width:100%;
-    background:#fd7a0f;
+    background:rgb(0, 101, 253);
     }
 .n-button{
     flex:2;
 }
 .nav-icons{
     display:none;
+}
+.dropdown-btn{
+font-size:1.1rem;
+text-transform:none;
+background:white;
+color:black
+}
+.dropdown-item{
+    color:black;
+    font-size:1.1rem;
+    font-weight:bold;
+}
+.dropdown-btn:hover{
+    border: none;
+    transform:scale(105%);
+    transition:.6s;
 }
 .button
 {
@@ -68,16 +99,16 @@ height:2rem;
 border:none;
 color:white;
 font-size: 16px;
-padding:1px 23px 1px 23px;
-background:linear-gradient(180deg,#fd7a0f 26.01%,#fb2f2f 99.36%);
-box-shadow: 0px 20px 24px 3px rgba(251,161,40,0.42);
+padding:6px 23px 1px 23px;
+background:linear-gradient(to right, #870000, #190a05);
+/* box-shadow: 0px 20px 24px 3px rgba(251,161,40,0.42); */
 }
 button:hover{
   background: white;
   cursor:pointer;
   font-weight: bold;
-  color:#fd7a0f;
-  border: 1px solid #fd7a0f;
+  color:#870000;
+  border: 1px solid #870000;
 }
 
 @media screen and (max-width:920px) {
@@ -89,7 +120,7 @@ button:hover{
         padding:1rem;
 
         position: absolute;
-        top: 80px;
+        top: 60px;
         left: -115%;
         opacity: 1;
         transition: all 0.5s ease;
@@ -97,30 +128,29 @@ button:hover{
         background-color: var(--orange);
       }
       .nav-menu.active {
-        background:rgba(255, 51, 0, 0.719);
+        background:rgb(255, 255, 255);
         align-items: center;
-        justify-content: center;
+        justify-content:center;
         left: 0px;
-        opacity: 1;
+        opacity:1;
         transition: all 0.5s ease;
-        z-index: 2;
+        z-index:2;
         color:rgb(255, 255, 255);
         font-weight: bold;
       }
       .n-list ul li:hover:after{
-    
+       
         width:100%;
         background:white;
         }
       .nav-icons{
+        margin-right:2rem;
         display:block;
       }
       .n-button{
         display: none;
     }
-    .nav-icons{
-       right:10rem;
-    }
+    
 
 }
 

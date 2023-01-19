@@ -1,25 +1,42 @@
 .booking-container{
-    width:80%;
-    height:70%;
+   background-image:url("https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+   background-repeat: no-repeat;
+   background-size: cover;
+   width:100vw;
+   height:100vh;
+   position: relative;
+   top: 10vh;
 }
 .booksub-container{
     display:flex;
 }
 .b-left{
- width:50%;
+ width:40%;
+ background: rgba(224, 224, 224, 0.534);
  padding: 1rem;
  height:70vh;
- margin:0 0 0 1rem;
- border:1px solid grey;
+ margin:4rem 0 0 3rem;
+ border:1px solid rgb(165, 163, 163);
  }
  .book-content{
  display:flex;
+ border-bottom:1px solid rgba(187, 186, 186, 0.699);
+ }
+ .room-fields{
+    margin-bottom:0.5rem;
+ }
+ .room-fields.ui.input>input{
+   max-width:50%;
+ }
+ .room-fields label{
+ font-size:1.2rem;
+ font-weight: bold;
  }
 
 .room-img img{
-    margin:1rem;
-    width:6rem;
-    height:4rem;
+    margin:3rem 0 3rem 7rem;
+    width:10rem;
+    height:6rem;
     border-radius:1px;
     box-shadow: 3px 8px 8px 4px rgba(22, 22, 22, 0.534);
 }
@@ -34,16 +51,36 @@ margin: 10px;
 } */
 .room-details h1{
  font-size:1.2rem;
+ font-weight: bold;
  margin-bottom:1rem;
 }
 .room-details p{
     font-size:15px;
-    line-height:3px;
-    color:gray;
+    font-weight:bolder;
+    line-height:10px;
+    color:rgb(54, 53, 53);
 }
 .amount{
-  margin-top:5rem;
+  margin-top:2rem;
+}
+.amount h1{
+    font-size:2rem;
+  }
+.amount p{
+ font-weight:bolder;
+ font-size: larger;
+ /* color:white; */
 }
 .b-right{
- width:50%
+ width:50%;
+ background: rgba(224, 224, 224, 0.534);
+ margin:4rem 0 0 1rem;
+ border:1px solid rgb(165, 163, 163);
+}
+.user-details{
+    margin:2rem;
+}
+.submit{
+    float:right;
+    margin:2rem 0rem;
 }

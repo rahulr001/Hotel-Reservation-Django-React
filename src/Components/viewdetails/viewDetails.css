@@ -1,0 +1,87 @@
+.viewdetails-container{
+    background:url('../Assets/bg1.jpg');
+    background-attachment: fixed;
+    background-size:cover;
+    width:100vw;
+    height:120vh;
+    position:absolute;
+    top:10vh;
+}
+.carousel{
+    height:60vh;
+    /* background: rgba(212, 212, 212, 0.623); */
+}
+.carousel-img{
+    position: relative;
+    top:2rem;
+    left:10vw;
+    height:60vh;
+    border-radius:1rem;
+    width:80vw;
+   }
+.carousel-image{
+    width:100%;
+    border-radius:1rem;
+    height:60vh;
+}
+.carousel-details{
+
+    display:flex;
+    margin-top:5rem;
+}
+.carousel-left{
+    background: rgba(209, 209, 209, 0.486);
+    margin:0 2rem;
+    border-radius:5px;
+}
+.carousel-details h1:nth-child(1){
+    margin:1rem 0 1rem 2rem;
+    font-weight:1000;
+}
+.carousel-details h1:nth-child(2){
+    margin:1rem 0 1rem 2rem;
+    font-size:1.5rem;
+    font-weight:1000;
+}
+.carousel-details h1:nth-child(4){
+    margin:1rem 0 1rem 2rem;
+    font-size:1.5rem;
+    font-weight:1000;
+}
+.carousel-details h6{
+    margin:1rem 0 1rem 2rem;
+}
+.carousel-details p{
+    margin:1rem 0 1rem 2rem;
+    font-size:1rem;
+    font-family:sans-serif;
+    /* font-weight: bold; */
+}
+.carousel-right{
+   background:rgba(209, 209, 209, 0.486);
+   width:40%;
+   margin:0 2rem 0 0;
+   border-radius:5px;
+   padding:10px 20px;
+}
+.carousel-right-header{
+    background: rgb(200, 201, 202);
+    height:3rem;
+    border-radius:5px;
+}
+.carousel-right-header h1{
+    font-size:1.5rem;
+    color:rgb(0, 0, 0);
+    padding:0.5rem 0;
+}
+.dp{
+    margin-top:1rem;
+}
+.carousel-right h5{
+    margin-top:1rem;
+    font-size:1.2rem;
+    font-weight: bold;
+}
+.bookbtn{
+    margin:3rem 0 1rem 6.5rem;
+}

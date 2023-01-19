@@ -1,0 +1,63 @@
+/* Register */
+
+.register-container{
+    background-image:url('../Assets/bg1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index:1;
+    top:10vh;   
+    width:100vw;
+    height:100vh;
+}
+
+.register-details{
+    background-color:rgb(253, 253, 253);
+    width:30vw;
+    position: relative;
+    top:10vh;
+    left:35vw;
+    box-shadow: rgba(5, 5, 5, 0.63) 0px 3px 8px;
+    height:75vh;
+    border-radius:5px;
+    /* border:1px solid rgb(0, 204, 255); */
+}
+.login-con{
+    height:60vh; 
+}
+.register-header{
+    background: rgb(200, 201, 202);
+    height:3rem;
+    border-radius:5px 5px 0 0;
+}
+.register-header h1{
+    font-size:1.5rem;
+    color:rgb(0, 0, 0);
+    padding:0.5rem 0 0.5rem 1rem;
+}
+.register-form{
+    width:80;
+    margin:2rem;
+}
+.register-form h6{
+  font-size:1.5rem;
+  margin-bottom:1rem;
+}
+.register-link{
+    margin-top:1rem;
+}
+.form-fields{
+    margin-bottom:0.5rem;
+    overflow:hidden;
+}
+.register-btn{
+    float:right;
+    margin:2rem 0;
+}
+.load{
+    position:absolute;
+}
+
+
+
+

@@ -1,0 +1,41 @@
+.admin-container{
+    position: absolute;
+    width:100vw;
+    height:120vh;
+    top:10vh;
+    left:2vw;
+}
+.admin-header{
+    text-align:center;
+    margin: 1rem;
+    
+}
+.admin-header h1{
+    font-size:2rem;
+    font-weight:bold;
+}
+.addroom-container{
+    width:50rem;
+    height:110vh;
+}
+.form-container{
+    max-width:50%;
+    /* display:flex; */
+    position: relative;
+    left:35vw;
+    height:45rem;
+    background: rgba(224, 224, 224, 0.534);
+    margin:2rem 0 0 1rem;
+    border:1px solid rgb(165, 163, 163);
+}
+.form-fieldss{
+    margin:2rem;
+}
+
+.form-fieldss .ui.input>input{
+    width:20rem;
+  }
+.upload{
+    float:right;
+    margin:0 1rem;
+}

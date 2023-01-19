@@ -2,10 +2,13 @@ import React,{useEffect,useState} from 'react';
 import axios from 'axios'; 
 import { useParams } from 'react-router-dom';
 import Booking from '../Components/BookingDetails/Booking';
+import Loading from '../Components/Loading/Loading';
+import Error from '../Components/Loading/Error';
+import Success from '../Components/Loading/Success';
 
 
 function BookingPage({match}) {
-    const {roomid} = useParams();
+    const {roomid,fromdate,todate} = useParams();
     const [room, setRoom] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
@@ -18,7 +21,7 @@ function BookingPage({match}) {
           ).data;
           setRoom(data);
           setLoading(false);
-           console.log(data)
+          //  console.log(data)
         } catch (error) {
           setError(true);
           console.log("error");
@@ -34,13 +37,13 @@ function BookingPage({match}) {
     <div>
       <div className="row">
         {loading ? (
-          <h1>Loading...</h1>
-        ) : error ? (
-          <h1>Error...</h1>
-        ) : (
-            <div className='main-con'>
-                <Booking room={room}/>
+          <Loading/>
+        ) : room ? (
+          <div className='main-con'>
+                <Booking room={room} fromdate={fromdate} todate={todate}/>
             </div>
+          ) : (
+            <Error/>
         )}
       </div>
     </div>

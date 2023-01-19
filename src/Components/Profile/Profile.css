@@ -1,0 +1,76 @@
+.profile-container{
+  
+    position:relative;
+    width:100vw;
+    height:110vh;
+    top:10vh;
+}
+.profile-container img{
+    z-index: -1;
+    width:100vw;
+    height:110vh;
+    position: fixed;
+}
+.profile-bg{
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.212);
+    border-radius:10px;
+    width:100vw;
+    height:110vh;
+    position: fixed;  
+}
+.tab-con{
+    /* background:rgba(255, 255, 255, 0.37); */
+    width:100vw;
+    height:100vh;
+    padding:1.5rem;
+    position:absolute;
+    top:0vh;
+}
+.tabs-header{
+    color:white;
+    position:absolute;
+    margin-left:2rem;
+}
+
+.profile-tab{
+   position:absolute;
+    color:black;
+    width:100vw;
+    height:100vh;
+    border-radius:5px;
+   
+}
+.profile-tab h1{
+    font-weight: bold;
+    font-size:2rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.profile-tab h3{
+    font-size:1rem;
+    font-weight: bold;
+}
+.cancel-btn{
+    float: right;
+    margin:1rem 0;
+}
+/* .mybook-container{
+    background: url('https://wallpapershome.com/images/pages/pic_h/11163.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+    position: absolute;
+    width:100vw;
+    height:110vh;
+    top:10vh;
+} */
+.booking-details-container{
+    background:rgba(255, 255, 255, 0.555);
+    position:relative;
+    top:1rem;
+    padding:1rem;
+    margin-bottom:1rem;
+    width:80vw;
+    border-radius:5px;
+    height:40vh;
+}
