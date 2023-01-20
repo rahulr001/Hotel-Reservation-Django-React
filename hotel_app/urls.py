@@ -9,6 +9,7 @@ from .views import (
     Party_hall_Booking_View,
     Party_Hall_Payment_details_View,
     Room_Payment_details_View,
+Property_Details_View
 
 )
 
@@ -18,8 +19,9 @@ urlpatterns = [
     path('roomBooking/', Room_Booking_Details_View.as_view(), name="roomBooking"),
     path('roomBookingDetails/', Booking_Details_ViewList, name="roomBookingDetails"),
     path('bookingDetails/', Booking_Details_View.as_view(), name='bookingDetails'),
-    path('roomOccupancy/', Room_Occupancy_View , name="roomOccupancy"),
+    path('roomOccupancy/', Room_Occupancy_View.as_view() , name="roomOccupancy"),
     path('partyHallBooking/', Party_hall_Booking_View.as_view(), name="partyHallBooking"),
     path('partyHallPayment/', Party_Hall_Payment_details_View.as_view(), name="partyHallPayment"),
     path('roomPayment/', Room_Payment_details_View.as_view(), name="roomPayment"),
+    path('propertyDetails/', Property_Details_View.as_view(), name="propertyDetails"),
 ]

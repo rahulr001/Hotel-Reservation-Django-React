@@ -34,8 +34,11 @@ class UserRegistrationView(APIView):
 
     def post(self, request, format=None):
         username, password, email = retrieve_email_and_password(request)
+        user_name = User.objects.filter(username=username)
+        if user_name:
+            result = 'Username already taken'
+        if request.data['password1'] != request.data['password2']:
+            result = "Passwords don't match"
+        User.objects.create_user(username=username, email=email, password=password)
 
-        user = User.objects.create_user(username=username, email=email, password=password)
-        if not user:
-            return Response({'errors': 'The username already exist'}, status=status.HTTP_400_BAD_REQUEST)
-        return Response(status=status.HTTP_200_OK)
+        return Response({'response': result})

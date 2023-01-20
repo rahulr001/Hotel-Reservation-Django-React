@@ -9,8 +9,8 @@ booking_for_choice = (
 room_type_choice = (
     ('Luxury', 'Luxury'),
     ('Indoor', 'Indoor'),
-    ("Single", 'Single'),
-    ('double', 'double')
+    ('Single', 'Single'),
+    ('Double', 'Double')
 )
 
 hall_type_choice = (
@@ -46,14 +46,14 @@ payment_type_choice = (
 
 
 class Room_Type(models.Model):
-    room_type = models.CharField(blank=True,choices=room_type_choice, max_length=20)
+    room_type = models.CharField(blank=True, choices=room_type_choice, max_length=20)
 
     def __str__(self):
         return self.room_type
 
 
 class Booking_Person_Details(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, default=1)
     name = models.CharField(max_length=20, blank=False)
     mobile_no = models.CharField(max_length=10)
     adhaar_no = models.CharField(max_length=12)
@@ -69,11 +69,11 @@ class Property_Details(models.Model):
     address = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.property_id
 
 
 class Booking_status(models.Model):
-    booking_status = models.CharField(max_length=20, choices=booking_status_choice)
+    booking_status = models.CharField(blank=True, max_length=20, choices=booking_status_choice)
 
     def __str__(self):
         return self.booking_status
@@ -82,11 +82,11 @@ class Booking_status(models.Model):
 class Room_Booking_Details(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     booking_id = models.CharField(max_length=20)
-    oyo_booking_id = models.IntegerField(blank=True)
+    oyo_booking_id = models.IntegerField(blank=True, null=True)
     room_type = models.ForeignKey(Room_Type, on_delete=models.PROTECT)
     no_of_rooms = models.IntegerField()
-    from_date = models.DateField()
-    to_date = models.DateField()
+    from_date = models.CharField(max_length=10)
+    to_date = models.CharField(max_length=10)
 
     def __str__(self):
         return self.booking_id
@@ -101,11 +101,11 @@ class Booking_Details(models.Model):
     booking_status = models.ForeignKey(Booking_status, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.user.username
+        return self.booking_id.booking_id
 
 
 class Hall_Type(models.Model):
-    hall_type = models.CharField(choices=hall_type_choice, max_length=20)
+    hall_type = models.CharField(blank=True, choices=hall_type_choice, max_length=20)
 
     def __str__(self):
         return self.hall_type
@@ -117,11 +117,11 @@ class Room_Details(models.Model):
     room_type = models.ForeignKey(Room_Type, on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.room_property_id.name
+        return self.room_property_id.property_id
 
 
 class Payment_Status(models.Model):
-    payment_status = models.CharField(max_length=10, choices=payment_status_choice)
+    payment_status = models.CharField( blank=True, max_length=10, choices=payment_status_choice)
 
     def __str__(self):
         return self.payment_status
@@ -143,23 +143,23 @@ class Party_Hall_Booking_Details(models.Model):
     advance_amount = models.IntegerField()
     hall_type = models.ForeignKey(Hall_Type, on_delete=models.PROTECT)
     rent_amount = models.IntegerField()
-    function_date = models.DateField()
-    function_time = models.TimeField()
-    refered_by = models.CharField(max_length=20, blank=True)
+    function_date = models.CharField(max_length=20)
+    function_time = models.CharField(max_length=20)
+    refered_by = models.CharField(max_length=20, blank=True, default="None")
 
     def __str__(self):
         return self.booking_id
 
 
 class Mode_of_Payment(models.Model):
-    mode_of_payment = models.CharField(max_length=30, choices=mode_of_payment_choice)
+    mode_of_payment = models.CharField(blank=True, max_length=30, choices=mode_of_payment_choice)
 
     def __str__(self):
         return self.mode_of_payment
 
 
 class Payment_Type(models.Model):
-    payment_type = models.CharField(max_length=10, choices=payment_type_choice)
+    payment_type = models.CharField(blank=True, max_length=10, choices=payment_type_choice)
 
     def __str__(self):
         return self.payment_type
@@ -170,9 +170,10 @@ class Room_Payment_details(models.Model):
     payment_id = models.CharField(max_length=20, blank=False)
     amount = models.IntegerField()
     mode_of_payment = models.ForeignKey(Mode_of_Payment, on_delete=models.PROTECT)
-    payment_type = models.ForeignKey(Payment_Type, on_delete=models.PROTECT)
-    date_time = models.DateTimeField()
+    # payment_type = models.ForeignKey(Payment_Type, on_delete=models.PROTECT)
+    date_time = models.CharField(max_length=100)
     booking_id = models.ForeignKey(Room_Booking_Details, on_delete=models.PROTECT)
+    payment_status = models.ForeignKey(Payment_Status, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.payment_id
@@ -182,10 +183,11 @@ class Party_Hall_Payment_details(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     payment_id = models.CharField(max_length=20, blank=False)
     amount = models.IntegerField()
-    mode_of_payment = models.ForeignKey(Mode_of_Payment, on_delete=models.PROTECT)
-    payment_type = models.ForeignKey(Payment_Type, on_delete=models.PROTECT)
-    date_time = models.DateTimeField()
+    mode_of_payment = models.ForeignKey(Mode_of_Payment, on_delete=models.PROTECT, default='Debit')
+    # payment_type = models.ForeignKey(Payment_Type, on_delete=models.PROTECT)
+    date_time = models.CharField(max_length=100)
     booking_id = models.ForeignKey(Party_Hall_Booking_Details, on_delete=models.PROTECT)
+    payment_status = models.ForeignKey(Payment_Status, on_delete=models.PROTECT,  )
 
     def __str__(self):
         return self.payment_id
